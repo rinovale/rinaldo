@@ -1,0 +1,22 @@
+.main{
+  background-color: rgb(99, 92, 92);
+  text-align: center;
+  padding: 2px;
+}
+
+.posts{
+  border: solid 2px;
+  margin: 5px;
+  border-radius: 10px;
+  border-color: rgb(18, 68, 75);
+  background-color:rgb(240, 232, 232);
+}
+
+.id{
+  font-size: 25pt;
+}
+
+.titolo{
+  -webkit-text-stroke: 3px black;
+  font-size: 30pt;
+}

@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect, useContext} from 'react';
+import Nav from './Nav/Nav';
+import Form from './Form/Form';
+import Main from './Main/Main';
+import { Post, TPost } from './Type/CommonType';
+import { AppContext } from './Context/AppContext';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [jsonData, setJsonData] = useState<Post[] | undefined>()
+  const propTypes = {jsonData, setJsonData}
+
+  useEffect(() => {
+    fetch('https://dummyjson.com/posts')
+    .then(res => res.json())
+    .then(json => setJsonData((json as TPost).posts))
+  }, [])
+  return(
+    <div>
+    <AppContext.Provider value={propTypes}>
+    <Nav></Nav>
+    <Form></Form>
+    <Main></Main>
+    </AppContext.Provider>
     </div>
-  );
+  )
 }
 
+
 export default App;
+
+
